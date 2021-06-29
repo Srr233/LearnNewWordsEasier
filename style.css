@@ -1,0 +1,8 @@
+body * {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font: 24px sans-serif;
+}
+.description {
+    display: inline;
+}

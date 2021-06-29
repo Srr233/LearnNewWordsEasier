@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Study Words</title>
+</head>
+<body>
+  <p class="description">Put your .txt file there: </p>
+  <input type="file" data-loadFile>
+  <div class="">
+    <span data-englishWord>in English word</span> - <span data-translatedWord>translated word</span>
+    <input type="text" data-addAnswer placeholder="Write your translated word" value="Choose file, press START"><br>
+    <button data-start>START</button>
+    <button data-saveLearned>Save learned words</button>
+    <button data-saveRest>Save rest of words</button>
+  </div>
+  <script src="./index.js"></script>
+</body>
+</html>
