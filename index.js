@@ -67,7 +67,7 @@ function isLearnedWord(couple) {
     for (let i = 0; i < couple.length; i++) {
         amountStar += +(couple[i] === '*');
     }
-    return amountStar >= amountStar;
+    return amountStar >= amount;
 }
 answerInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
