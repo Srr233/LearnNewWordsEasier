@@ -5,6 +5,7 @@ const translatedWord = document.querySelector('[data-translatedWord]');
 const answerInput = document.querySelector('[data-addAnswer]');
 const learnedWordsButton = document.querySelector('[data-saveLearned]');
 const restOfWords = document.querySelector('[data-saveRest]');
+const selectCountRepeat = document.querySelector('[data-selectAmount]');
 
 let allWords;
 let checkedWords = [];
@@ -18,7 +19,7 @@ inputFile.addEventListener('change', function (e) {
     fileReader.readAsText(file);
     fileReader.onload = () => {
         const result = fileReader.result;
-        const resultSplit = result.split('\r\n');
+        const resultSplit = result.split('\r\n').map(couple => couple.trim().toLowerCase());
         allWords = resultSplit.filter(couple => couple.match(expCheck));
     }
 });
@@ -33,11 +34,15 @@ function getEngRu(str) {
 function sortWords(arrayWords) {
     return arrayWords.sort(() => Math.random() - Math.random());
 }
+let isStarted = false;
 function startGame(arrayWords) {
+    isStarted = true;
     if (!arrayWords.length) {
+        isStarted = false;
         alert('All words are learned!');
         return;
     }
+    answerInput.value = '';
     allWords = sortWords(arrayWords);
     const firstWord = allWords.pop();
     englishWord.textContent = getEngRu(firstWord).eng;
@@ -55,16 +60,14 @@ function nextWord(couple) {
     // push checked word
     checkedWords.push(couple);
 }
-function saveToLearnedWordsAndCleanCheckedWords(learnedW, checkedW) {
 
-}
-
+let amount = 3;
 function isLearnedWord(couple) {
     let amountStar = 0;
     for (let i = 0; i < couple.length; i++) {
         amountStar += +(couple[i] === '*');
     }
-    return amountStar >= 3;
+    return amountStar >= amountStar;
 }
 answerInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -72,7 +75,7 @@ answerInput.addEventListener('keydown', (e) => {
         const indexOfCRWord = checkedWords.findIndex(str => str.includes(currentWord));
         const coupleWords = checkedWords[indexOfCRWord];
         const enRu = getEngRu(coupleWords);
-        const userAnswer = e.target.value;
+        const userAnswer = e.target.value.toLowerCase();
         if (userAnswer === enRu.ru) {
             alert ('Good! It\'s correct!');
             checkedWords[indexOfCRWord] = coupleWords + '*';
@@ -128,4 +131,14 @@ learnedWordsButton.addEventListener('click', () => {
     } else {
         downloadWords(learnedWords, 'learned words');
     }
+});
+let previousOption = 1;
+selectCountRepeat.addEventListener('change', function(e) {
+    if (isStarted) {
+        alert('The game is started! You must choose amount before start the game!');
+        this.value = previousOption;
+        return;
+    }
+    amount = this.value;
+    previousOption = this.value;
 });
