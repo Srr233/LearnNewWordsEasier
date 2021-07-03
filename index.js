@@ -6,11 +6,14 @@ const answerInput = document.querySelector('[data-addAnswer]');
 const learnedWordsButton = document.querySelector('[data-saveLearned]');
 const restOfWords = document.querySelector('[data-saveRest]');
 const selectCountRepeat = document.querySelector('[data-selectAmount]');
+const deleteAllStarsButton = document.querySelector('[data-deleteAllStars]');
 
 let allWords;
 let checkedWords = [];
 let learnedWords = [];
 let uploadedWords = [];
+let isStarted = false;
+let isFileLoaded = false;
 
 const expCheck = /^\D* - \D*\*{0,3}$/g;
 inputFile.addEventListener('change', function (e) {
@@ -18,11 +21,13 @@ inputFile.addEventListener('change', function (e) {
     const fileReader = new FileReader();
     fileReader.readAsText(file);
     fileReader.onload = () => {
+        isFileLoaded = true;
         const result = fileReader.result;
         const resultSplit = result.split('\r\n').map(couple => couple.trim().toLowerCase());
         allWords = resultSplit.filter(couple => couple.match(expCheck));
     }
 });
+
 function getEngRu(str) {
     const splited = str.split(' - ');
     const ruReplace = splited[1].replaceAll('*', '');
@@ -34,8 +39,15 @@ function getEngRu(str) {
 function sortWords(arrayWords) {
     return arrayWords.sort(() => Math.random() - Math.random());
 }
-let isStarted = false;
 function startGame(arrayWords) {
+    if (!isFileLoaded) {
+        alert('You must load a file!');
+        return;
+    }
+    if (!allWords || !allWords.length) {
+        alert('Words haven\'t found. Check your words!');
+        return
+    };
     isStarted = true;
     if (!arrayWords.length) {
         isStarted = false;
@@ -51,7 +63,6 @@ function startGame(arrayWords) {
     checkedWords.push(firstWord);
 }
 start.addEventListener('click', () => {
-    if (!allWords || !allWords.length) throw new Error('Could not find words');
     startGame(allWords);
 });
 function nextWord(couple) {
@@ -71,6 +82,10 @@ function isLearnedWord(couple) {
 }
 answerInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
+        if (!isFileLoaded) {
+            alert('You must load a file!');
+            return;
+        }
         const currentWord = englishWord.textContent;
         const indexOfCRWord = checkedWords.findIndex(str => str.includes(currentWord));
         const coupleWords = checkedWords[indexOfCRWord];
@@ -141,4 +156,17 @@ selectCountRepeat.addEventListener('change', function(e) {
     }
     amount = this.value;
     previousOption = this.value;
+});
+
+deleteAllStarsButton.addEventListener('click', function (e) {
+    if (!isFileLoaded) {
+        alert('You must load a file!');
+        return;
+    }
+    if (isStarted) {
+        alert('You must save your file before playing');
+        return;
+    }
+    allWords = allWords.map(couple => couple.replaceAll('*', ''));
+    downloadWords(allWords, 'updated words');
 });
