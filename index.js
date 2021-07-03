@@ -7,11 +7,13 @@ const learnedWordsButton = document.querySelector('[data-saveLearned]');
 const restOfWords = document.querySelector('[data-saveRest]');
 const selectCountRepeat = document.querySelector('[data-selectAmount]');
 const deleteAllStarsButton = document.querySelector('[data-deleteAllStars]');
+const showLetterButton = document.querySelector('[data-showLetter]');
 
 let allWords;
 let checkedWords = [];
 let learnedWords = [];
 let uploadedWords = [];
+let currentTranslatedWord;
 let isStarted = false;
 let isFileLoaded = false;
 
@@ -58,6 +60,7 @@ function startGame(arrayWords) {
     allWords = sortWords(arrayWords);
     const firstWord = allWords.pop();
     englishWord.textContent = getEngRu(firstWord).eng;
+    addWordInCurrentWord(firstWord);
     translatedWord.textContent = '...';
     // push checked word
     checkedWords.push(firstWord);
@@ -80,8 +83,12 @@ function isLearnedWord(couple) {
     }
     return amountStar >= amount;
 }
+function addWordInCurrentWord(coupleWords) {
+    const enRu = getEngRu(coupleWords);
+    currentTranslatedWord = enRu.ru;
+}
 answerInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
         if (!isFileLoaded) {
             alert('You must load a file!');
             return;
@@ -99,6 +106,8 @@ answerInput.addEventListener('keydown', (e) => {
                 learnedWords.push(checkedWords[indexOfCRWord]);
                 checkedWords.splice(indexOfCRWord, 1);
             }
+        } else {
+            checkedWords[indexOfCRWord] = coupleWords.replaceAll('*', '');
         }
         translatedWord.textContent = enRu.ru;
         e.target.value = '';
@@ -110,7 +119,9 @@ answerInput.addEventListener('keydown', (e) => {
             startGame(allWords);
         } else {
             setTimeout(() => {
-                nextWord(allWords.pop());
+                const next = allWords.pop();
+                addWordInCurrentWord(next);
+                nextWord(next);
             }, 2000);
         } 
     }
@@ -158,15 +169,35 @@ selectCountRepeat.addEventListener('change', function(e) {
     previousOption = this.value;
 });
 
-deleteAllStarsButton.addEventListener('click', function (e) {
+deleteAllStarsButton.addEventListener('click', function(e) {
     if (!isFileLoaded) {
         alert('You must load a file!');
         return;
     }
-    if (isStarted) {
+    if (!isStarted) {
         alert('You must save your file before playing');
         return;
     }
     allWords = allWords.map(couple => couple.replaceAll('*', ''));
     downloadWords(allWords, 'updated words');
 });
+function showLetter() {
+    if (!isFileLoaded) {
+        alert('You must load a file!');
+        return;
+    }
+    if (!isStarted) {
+        alert('You must play before getting a prompt');
+        return;
+    }
+    if (!currentTranslatedWord[0]) return;
+    if (translatedWord.textContent.includes('.')) translatedWord.textContent = '';
+    translatedWord.textContent += currentTranslatedWord[0];
+    currentTranslatedWord = currentTranslatedWord.slice(1);
+}
+answerInput.addEventListener('keyup', function(e) {
+    if (e.shiftKey && e.key === 'Enter') {
+        showLetter();
+    }
+});
+showLetterButton.addEventListener('click', showLetter);
