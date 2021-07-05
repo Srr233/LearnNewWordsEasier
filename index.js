@@ -66,6 +66,7 @@ function startGame(arrayWords) {
     translatedWord.textContent = '...';
     // push checked word
     checkedWords.push(firstWord);
+    start.disabled = true;
 }
 start.addEventListener('click', () => {
     startGame(allWords);
@@ -114,11 +115,11 @@ answerInput.addEventListener('keydown', (e) => {
         translatedWord.textContent = enRu.ru;
         e.target.value = '';
         if (!allWords.length) {
-            alert('All words are repeated! Great!');
+            start.disabled = false;
+            alert('All words are repeated! Great! Now you can start again!');
             allWords = checkedWords.filter(str => !learnedWords.includes(str));
             uploadedWords = checkedWords.filter(str => !learnedWords.includes(str));
             checkedWords = [];
-            startGame(allWords);
         } else {
             setTimeout(() => {
                 const next = allWords.pop();

@@ -91,7 +91,7 @@ input, select, button {
 }
 @media (max-width: 1440px) {
     :root {
-        font-size: 30px;
+        font-size: 35px;
     }
 }
 @media (max-width: 1024px) {
