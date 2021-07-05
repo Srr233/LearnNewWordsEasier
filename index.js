@@ -8,6 +8,8 @@ const restOfWords = document.querySelector('[data-saveRest]');
 const selectCountRepeat = document.querySelector('[data-selectAmount]');
 const deleteAllStarsButton = document.querySelector('[data-deleteAllStars]');
 const showLetterButton = document.querySelector('[data-showLetter]');
+const closeButtonManual = document.querySelector('.close');
+
 
 let allWords;
 let checkedWords = [];
@@ -158,7 +160,7 @@ learnedWordsButton.addEventListener('click', () => {
         downloadWords(learnedWords, 'learned words');
     }
 });
-let previousOption = 1;
+let previousOption = 3;
 selectCountRepeat.addEventListener('change', function(e) {
     if (isStarted) {
         alert('The game is started! You must choose amount before start the game!');
@@ -194,6 +196,7 @@ function showLetter() {
     if (translatedWord.textContent.includes('.')) translatedWord.textContent = '';
     translatedWord.textContent += currentTranslatedWord[0];
     currentTranslatedWord = currentTranslatedWord.slice(1);
+    answerInput.focus();
 }
 answerInput.addEventListener('keyup', function(e) {
     if (e.shiftKey && e.key === 'Enter') {
@@ -201,3 +204,7 @@ answerInput.addEventListener('keyup', function(e) {
     }
 });
 showLetterButton.addEventListener('click', showLetter);
+
+closeButtonManual.addEventListener('click', function(e) {
+    document.querySelector('.manual-block').classList.add('hidden');
+});
