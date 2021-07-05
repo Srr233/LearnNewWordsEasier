@@ -3,7 +3,7 @@
 }
 body {
     font-size: 1.6rem;
-    background-color: #FFC040;
+    background-color: #fff0d1;
     margin: 0;
 }
 .main {
@@ -22,7 +22,22 @@ button {
     margin-top: 3px;
     margin-bottom: 3px;
     box-shadow: none;
+    /* border: none; */
+    /* border-radius: 20px; */
+    box-shadow: 1px 1px 2px gray;
+
+}
+.grayButton {
+    border-radius: 20px;
+    background-color: rgba(227, 228, 228, 0.692);
     border: none;
+    color: rgb(50, 54, 54);
+    
+}
+.orangeButton{
+    border-radius: 20px;
+    border-color: rgba(253, 195, 4, 0.918);
+    background-color: rgba(253, 216, 4, 0.836);
 }
 button:hover {
     box-shadow: 1px 1px 10px gray;
@@ -44,11 +59,21 @@ input, select, button {
 .cooseFile {
     width: 90%;
 }
+.buttonHZ {
+    display: flex;
+    justify-content: center;
+}
 
 .mainBlock {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.wordsBox {
+    padding: 25px 10px;
+    background-color: #cbfdc5;
+    border-radius: 7px;
+
 }
 
 .buttons {

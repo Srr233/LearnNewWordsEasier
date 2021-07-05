@@ -15,18 +15,23 @@
     <div>
       <div class="choosingFileBlock">
         <p class="description">Put your .txt file there: </p>
+      <div class="buttonHZ">
         <input type="file" class="cooseFile" data-loadFile>
       </div>
+      </div>
       <div class="mainBlock">
+        <div class="wordsBox">
         <div class="words">
           <span data-englishWord>in English word</span> - <span data-translatedWord>translated word</span>
         </div>
         <div class="putAnswer">
           <input type="text" data-addAnswer placeholder="Write your translated word" value="Choose file, press START">
-          <button data-showLetter>Show +1 letter</button>
+          <button class="grayButton" data-showLetter>Show +1 letter</button>
         </div>
+        </div>
+
         <div class="startBlock">
-          <button data-start>START</button>
+          <button class="orangeButton" data-start>START</button>
           <select name="select count"  data-selectAmount>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -36,9 +41,9 @@
           </select>
         </div>
         <div class="buttons">
-          <button data-deleteAllStars>Save words without stars</button>
-          <button data-saveLearned>Save learned words</button>
-          <button data-saveRest>Save rest of words</button>
+          <button class="grayButton" data-deleteAllStars>Save words without stars</button>
+          <button class="grayButton" data-saveLearned>Save learned words</button>
+          <button class="grayButton" data-saveRest>Save rest of words</button>
         </div>
       </div>
     </div>
