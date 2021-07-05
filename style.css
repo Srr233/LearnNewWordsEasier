@@ -15,8 +15,12 @@ body {
     min-width: 320px;
     max-width: 60rem;
 }
-p {
+p, h1, h2, h3{
+    font-size: 1.6rem;
     margin: 0;
+}
+h2 {
+    margin-bottom: 5px;
 }
 button {
     margin-top: 3px;
@@ -61,7 +65,30 @@ input, select, button {
     border-radius: 5px;
     padding: 0 5px 0 5px;
 }
+.manual-block {
+    overflow: auto;
+    height: 100vh;
+    width: 50vw;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.hidden {
+    visibility: hidden;
+}
 
+.close {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+@media (max-width: 2560px) {
+    :root {
+        font-size: 50px;
+    }
+}
 @media (max-width: 1440px) {
     :root {
         font-size: 30px;
