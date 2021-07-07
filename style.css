@@ -131,7 +131,7 @@ input, select, button {
 }
 @media (max-width: 600px) {
     .manual-block {
-        width: 100vw;
+        width: 90vw;
     }
     :root {
         font-size: 18px;
