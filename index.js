@@ -177,10 +177,6 @@ deleteAllStarsButton.addEventListener('click', function(e) {
         alert('You must load a file!');
         return;
     }
-    if (!isStarted) {
-        alert('You must save your file before playing');
-        return;
-    }
     allWords = allWords.map(couple => couple.replaceAll('*', ''));
     downloadWords(allWords, 'updated words');
 });
