@@ -16,7 +16,10 @@ body {
 }
 .contentBox {
     width: 100%;
-    margin-top: 4vh;
+    padding-top: 4vh;
+    /* padding: 4vh;
+    margin-top: 4vh; */
+    /* background-color: #ffc34b; */
 }
 p {
     margin: 0;
@@ -38,7 +41,7 @@ button {
 .orangeButton{
     border-radius: 20px;
     border-color: rgba(253, 195, 4, 0.918);
-    background-color: rgba(253, 187, 4, 0.836);
+    background-color: rgba(253, 174, 4, 0.877);
 }
 button:hover {
     box-shadow: 1px 1px 10px gray;
@@ -92,21 +95,26 @@ input, select, button {
     color:#000;
 }
 .mainBlock {
+    padding: 0 10px 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 7px;
+    background: linear-gradient(to right, #fffffb2f, rgba(253, 187, 4, 0.836), #fffffb2f);
 }
 .wordsBox {
+    
     width: 100%;
-    padding: 0 1.5vh 4vw 1.5vh;
-    background: linear-gradient(to right, #fffffb2f, rgba(253, 187, 4, 0.836), #fffffb2f);
+    /* padding: 0 1.5vh 5vh 1.5vh; */
+    padding: 0 0 5vh 0;
+    /* background: linear-gradient(to right, #fffffb2f, rgba(253, 187, 4, 0.836), #fffffb2f); */
     border-radius: 7px;
 
 }
 .starsBox {
     display: flex;
     justify-content: flex-end;
-    height: 4vw;
+    height: 5vh;
 }
 .buttons {
     display: flex;
