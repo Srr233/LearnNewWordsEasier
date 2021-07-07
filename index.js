@@ -8,6 +8,8 @@ const restOfWords = document.querySelector('[data-saveRest]');
 const selectCountRepeat = document.querySelector('[data-selectAmount]');
 const deleteAllStarsButton = document.querySelector('[data-deleteAllStars]');
 const showLetterButton = document.querySelector('[data-showLetter]');
+const closeButtonManual = document.querySelector('.close');
+
 
 let allWords;
 let checkedWords = [];
@@ -64,6 +66,7 @@ function startGame(arrayWords) {
     translatedWord.textContent = '...';
     // push checked word
     checkedWords.push(firstWord);
+    start.disabled = true;
 }
 start.addEventListener('click', () => {
     startGame(allWords);
@@ -112,11 +115,11 @@ answerInput.addEventListener('keydown', (e) => {
         translatedWord.textContent = enRu.ru;
         e.target.value = '';
         if (!allWords.length) {
-            alert('All words are repeated! Great!');
+            start.disabled = false;
+            alert('All words are repeated! Great! Now you can start again!');
             allWords = checkedWords.filter(str => !learnedWords.includes(str));
             uploadedWords = checkedWords.filter(str => !learnedWords.includes(str));
             checkedWords = [];
-            startGame(allWords);
         } else {
             setTimeout(() => {
                 const next = allWords.pop();
@@ -158,7 +161,7 @@ learnedWordsButton.addEventListener('click', () => {
         downloadWords(learnedWords, 'learned words');
     }
 });
-let previousOption = 1;
+let previousOption = 3;
 selectCountRepeat.addEventListener('change', function(e) {
     if (isStarted) {
         alert('The game is started! You must choose amount before start the game!');
@@ -172,10 +175,6 @@ selectCountRepeat.addEventListener('change', function(e) {
 deleteAllStarsButton.addEventListener('click', function(e) {
     if (!isFileLoaded) {
         alert('You must load a file!');
-        return;
-    }
-    if (!isStarted) {
-        alert('You must save your file before playing');
         return;
     }
     allWords = allWords.map(couple => couple.replaceAll('*', ''));
@@ -194,6 +193,7 @@ function showLetter() {
     if (translatedWord.textContent.includes('.')) translatedWord.textContent = '';
     translatedWord.textContent += currentTranslatedWord[0];
     currentTranslatedWord = currentTranslatedWord.slice(1);
+    answerInput.focus();
 }
 answerInput.addEventListener('keyup', function(e) {
     if (e.shiftKey && e.key === 'Enter') {
@@ -201,3 +201,7 @@ answerInput.addEventListener('keyup', function(e) {
     }
 });
 showLetterButton.addEventListener('click', showLetter);
+
+closeButtonManual.addEventListener('click', function(e) {
+    document.querySelector('.manual-block').classList.add('hidden');
+});
