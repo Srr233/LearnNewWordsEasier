@@ -3,17 +3,20 @@
 }
 body {
     font-size: 1.6rem;
-    background-color: #fff0d1;
+    background-color: #ffc95c;
     margin: 0;
 }
 .main {
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     height: 100vh;
     min-width: 320px;
     max-width: 60rem;
+}
+.contentBox {
+    margin-top: 2%;
 }
 p {
     margin: 0;
@@ -29,7 +32,9 @@ button {
 }
 .grayButton {
     border-radius: 20px;
-    background-color: rgba(227, 228, 228, 0.692);
+    /* background-color: rgba(227, 228, 228, 0.692); */
+    background-color: rgba(255, 246, 206, 0.411);
+    border-color: rgba(253, 195, 4, 0.918);
     border: none;
     color: rgb(50, 54, 54);
     
@@ -37,7 +42,7 @@ button {
 .orangeButton{
     border-radius: 20px;
     border-color: rgba(253, 195, 4, 0.918);
-    background-color: rgba(253, 216, 4, 0.836);
+    background-color: rgba(253, 187, 4, 0.836);
 }
 button:hover {
     box-shadow: 1px 1px 10px gray;
@@ -51,14 +56,56 @@ input, select, button {
 }
 .choosingFileBlock {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    justify-content: flex-end;
+    /* flex-direction: column; */
+    align-items: flex-end;
     margin-bottom: 10px;
 }
-.cooseFile {
+/* .cooseFile {
     width: 90%;
+    color: rgba(0, 0, 0, 0.582);
+} */
+
+/* .example-1 .form-group {
+    display: block;
+    padding:1px;
+    margin:1px;
+} */
+.example-1 input[type=file] {
+    height: 1px;
+    outline:0;
+    opacity:0;
+    pointer-events:none;
+    user-select:none
 }
+.example-1 .label {
+    width:60px;
+    border:1px dashed grey;
+    border-radius:5px;
+    display:flex;
+    flex-direction: column;
+    padding:0.1em;
+    transition:border 300ms ease;
+    cursor:pointer;
+    text-align:center;
+    font-size: 0.7rem;
+    background-color: rgba(255, 246, 206, 0.103);
+    box-shadow: 1px 1px 2px rgba(128, 128, 128, 0.644);
+}
+.example-1 .label i {
+    display:block;
+}
+.example-1 .label i,.example-1 .label .title {
+    color:grey;
+    transition:200ms color
+}
+.example-1 .label:hover {
+    border:2px solid #000;
+}
+.example-1 .label:hover i,.example-1 .label:hover .title {
+    color:#000;
+}
+
 .buttonHZ {
     display: flex;
     justify-content: center;
@@ -70,8 +117,9 @@ input, select, button {
     align-items: center;
 }
 .wordsBox {
-    padding: 25px 10px;
-    background-color: #cbfdc5;
+    padding: 35px 10px;
+    /* background-color: #fffffb2f; */
+    background: linear-gradient(to right, #fffffb2f, rgba(253, 187, 4, 0.836), #fffffb2f);
     border-radius: 7px;
 
 }
