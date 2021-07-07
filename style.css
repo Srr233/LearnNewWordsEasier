@@ -46,6 +46,7 @@ button {
 }
 button:hover {
     box-shadow: 1px 1px 10px gray;
+    cursor: pointer;
 }
 input {
     border: none;
@@ -100,7 +101,7 @@ input, select, button {
     transition:200ms color
 }
 .example-1 .label:hover {
-    border:2px solid #000;
+    border:1px solid #000;
 }
 .example-1 .label:hover i,.example-1 .label:hover .title {
     color:#000;
@@ -128,7 +129,10 @@ input, select, button {
     display: flex;
     flex-direction: column;
 }
-
+select:hover {
+    box-shadow: 1px 1px 10px gray;
+    cursor:pointer;
+}
 .startBlock {
     margin-bottom: 10px;
 }
