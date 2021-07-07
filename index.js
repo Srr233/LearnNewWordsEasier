@@ -30,6 +30,26 @@ inputFile.addEventListener('change', function (e) {
     }
 });
 
+function countStars(coup) {
+    let count = 0;
+    for (let i = 0; i < coup.length; i++) {
+        count += +(coup[i] === '*');
+    }
+    return count;
+}
+
+function showStars(str) {
+    starsCount = countStars(str);
+    let starBox = document.querySelector(".starsBox");
+    starBox.innerHTML = '';
+    for (let i = 0; i < starsCount; i ++) {
+        let starImg = document.createElement("img");
+        starImg.classList.add("starImg");
+        starImg.src =  './assets/star-win.svg';
+        starBox.appendChild(starImg);
+    }
+}
+
 function getEngRu(str) {
     const splited = str.split(' - ');
     const ruReplace = splited[1].replaceAll('*', '');
@@ -64,6 +84,7 @@ function startGame(arrayWords) {
     translatedWord.textContent = '...';
     // push checked word
     checkedWords.push(firstWord);
+    showStars(arrayWords);
 }
 start.addEventListener('click', () => {
     startGame(allWords);
@@ -73,14 +94,12 @@ function nextWord(couple) {
     translatedWord.textContent = '...';
     // push checked word
     checkedWords.push(couple);
+    showStars(couple);
 }
 
 let amount = 3;
 function isLearnedWord(couple) {
-    let amountStar = 0;
-    for (let i = 0; i < couple.length; i++) {
-        amountStar += +(couple[i] === '*');
-    }
+    let amountStar = countStars(couple);
     return amountStar >= amount;
 }
 function addWordInCurrentWord(coupleWords) {

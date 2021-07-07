@@ -13,10 +13,11 @@ body {
     /* align-items: center; */
     height: 100vh;
     min-width: 320px;
-    max-width: 60rem;
+    max-width: 600px;
 }
 .contentBox {
-    margin-top: 2%;
+    width: 100%;
+    margin-top: 4vh;
 }
 p {
     margin: 0;
@@ -25,14 +26,10 @@ button {
     margin-top: 3px;
     margin-bottom: 3px;
     box-shadow: none;
-    /* border: none; */
-    /* border-radius: 20px; */
     box-shadow: 1px 1px 2px gray;
-
 }
 .grayButton {
     border-radius: 20px;
-    /* background-color: rgba(227, 228, 228, 0.692); */
     background-color: rgba(255, 246, 206, 0.411);
     border-color: rgba(253, 195, 4, 0.918);
     border: none;
@@ -58,20 +55,9 @@ input, select, button {
 .choosingFileBlock {
     display: flex;
     justify-content: flex-end;
-    /* flex-direction: column; */
     align-items: flex-end;
     margin-bottom: 10px;
 }
-/* .cooseFile {
-    width: 90%;
-    color: rgba(0, 0, 0, 0.582);
-} */
-
-/* .example-1 .form-group {
-    display: block;
-    padding:1px;
-    margin:1px;
-} */
 .example-1 input[type=file] {
     height: 1px;
     outline:0;
@@ -106,25 +92,23 @@ input, select, button {
 .example-1 .label:hover i,.example-1 .label:hover .title {
     color:#000;
 }
-
-.buttonHZ {
-    display: flex;
-    justify-content: center;
-}
-
 .mainBlock {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .wordsBox {
-    padding: 35px 10px;
-    /* background-color: #fffffb2f; */
+    width: 100%;
+    padding: 0 10px 4vw 10px;
     background: linear-gradient(to right, #fffffb2f, rgba(253, 187, 4, 0.836), #fffffb2f);
     border-radius: 7px;
 
 }
-
+.starsBox {
+    display: flex;
+    justify-content: flex-end;
+    height: 4vw;
+}
 .buttons {
     display: flex;
     flex-direction: column;
@@ -136,14 +120,12 @@ select:hover {
 .startBlock {
     margin-bottom: 10px;
 }
-
 .words {
     background-color: #fff;
     padding: 0 5px 0 5px;
     margin-bottom: 5px;
     border-radius: 5px;
 }
-
 .headerImg {
     display: inline;
 }
@@ -173,11 +155,17 @@ select:hover {
         align-items: center;
     }
     input, select, button {
-        font-size: 2rem;
+        font-size: 1.5rem;
+    }
+    .main {
+        width: 90%;
     }
 }
 @media (max-width: 425px) {
     :root {
         font-size: 12px;
+    }
+    .main {
+        width: 90%;
     }
 }
