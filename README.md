@@ -1,1 +1,3 @@
-In here will be a description of this programm... Give me some time.
+To start develop use:
+1. npm install
+2. npm start
