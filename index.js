@@ -1,5 +1,3 @@
-import './style.css';
-
 const inputFile = document.querySelector('[data-loadFile]');
 const start = document.querySelector('[data-start]');
 const englishWord = document.querySelector('[data-englishWord]');
