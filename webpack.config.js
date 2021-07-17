@@ -11,13 +11,14 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      inject: false,
       title: 'Study english',
       filename: 'index.html',
       template: './index.html',
     }),
     new CopyPlugin({
         patterns: [
-          { from: "./assets", to: "assets/" },
+          { from: "./src/assets", to: "assets/" },
         ],
       }),
   ],
