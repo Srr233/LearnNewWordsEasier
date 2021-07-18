@@ -88,6 +88,7 @@ document.querySelector('[data-chunkAmount]').addEventListener('change', (functio
       this.value = previousOption;
       return
     }
+    previousOption = +this.value;
     game.variables.amoutOfChunksLearn = +this.value;
   }
 
