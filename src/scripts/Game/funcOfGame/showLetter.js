@@ -5,7 +5,7 @@ function updateWords(currentWord) {
     this.variables.currentTranslatedWord = currentWord.slice(1);
 }
 function showLetter() {
-    if (_isContainMessage.call(this)) return;
+    if (_isContainMessage.call(this, 'answer')) return;
     const currentWord = this.variables.currentTranslatedWord;
     // checke if it isn't empty
     if (!currentWord[0]) return;
