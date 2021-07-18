@@ -33,6 +33,7 @@ function breakCombination(i) {
     }
     this.variables.checkedWords[i] = couple.replaceAll('*', '');
 }
+const timeing = 2000;
 
 function continueGameChunk() {
     const notLearnedWords = this.variables.chunkedWords[0]
@@ -52,7 +53,9 @@ function continueGameChunk() {
         this.variables.chunkedWords.splice(0, 1);
         this.variables.currentWords = this.variables.chunkedWords[0].slice();
     }
-    nextWord.call(this);
+    setTimeout(() => {
+        nextWord.call(this);
+    }, timeing);
 }
 
 function nextWord() {
@@ -98,7 +101,7 @@ function answer(inputText) {
     } else {
         setTimeout(() => {
             nextWord.call(this);
-        }, 2000);
+        }, timeing);
     } 
 }
 
