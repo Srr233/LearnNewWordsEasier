@@ -9,7 +9,7 @@ function _isContainMessage(type) {
       alert('You must load a file!');
       return true;
     }
-    if (type !== 'answer' && !this.variables.allWords.length) {
+    if (type !== 'answer' && !this.variables.currentWords.length) {
       alert('Words haven\'t found or all words are learned. Check your words!');
       return true;
     };

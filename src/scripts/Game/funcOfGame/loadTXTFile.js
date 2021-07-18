@@ -13,7 +13,7 @@ function loadTXTFile(text) {
 
     if (!words.length) return false;
 
-    this.variables.allWords = words.slice();
+    this.variables.currentWords = words.slice();
     this.variables.loadedWords = words.slice();
 
     //show that file loaded

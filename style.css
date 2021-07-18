@@ -66,14 +66,15 @@ input, select, button {
     padding: 0 5px 0 5px;
 }
 .manual-block {
-    overflow: auto;
-    height: 100vh;
-    width: 50vw;
-    background-color: #fff;
-    position: absolute;
     top: 0;
+    width: 50vw;
+    z-index: 10;
+    height: 100vh;
+    overflow: auto;
+    position: absolute;
     padding-left: 10px;
     padding-right: 10px;
+    background-color: #fff;
 }
 .hidden {
     visibility: hidden;
@@ -99,6 +100,17 @@ input, select, button {
     object-fit: contain;
     width: 100%;
     height: 100%;
+}
+
+.chunkBlock {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    font-size: 0.5em;
+}
+.chunkBlock input {
+    height: 1rem;
+    width: 1rem;
 }
 @media (max-width: 2560px) {
     :root {

@@ -74,6 +74,20 @@ function getStringHTMLGame() {
         <option value="4">4</option>
         <option value="5">5</option>
         </select>
+        <div class="chunkBlock">
+        <span>chunk mode</span>
+        <input data-chunkModeButton type="checkbox" value="off">
+        <select name="chunk count" data-chunkAmount disabled>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option selected value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+        </div>
     </div>
     <div class="buttons">
         <button data-deleteAllStars>Save words without stars</button>

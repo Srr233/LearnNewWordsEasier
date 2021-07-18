@@ -9,15 +9,17 @@ import { changeAmountRepeat } from './funcOfGame/changeAmountRepeat.js';
 class Game {
   constructor() {
     this.variables = {
-      allWords : [],
+      currentWords: [],
       loadedWords: [],
       indexOfCRWord: 0,
       howManyRepeat: 3,
       checkedWords: [],
-      learnedWords: [],
+      learnedWords: new Set(),
       isStarted: false,
-      uploadedWords: [],
       isFileLoaded: false,
+      amoutOfChunksLearn: 5,
+      chunkMode: false,
+      chunkedWords: [],
       currentTranslatedWord: '',
     }
 

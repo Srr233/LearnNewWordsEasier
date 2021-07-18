@@ -16,7 +16,7 @@ function init(element) {
     }
 
     this.htmlElements.start.addEventListener('click', () => {
-      this.startGame(this.variables.allWords);
+      this.startGame(this.variables.currentWords);
     });
 
     this.htmlElements.closeButtonManual.addEventListener('click', function(e) {
