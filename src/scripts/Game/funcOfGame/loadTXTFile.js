@@ -16,7 +16,7 @@ function loadTXTFile(text) {
     this.variables.currentWords = words.slice();
     this.variables.loadedWords = words.slice();
 
-    //show that file loaded
+    //show that file is loaded
     this.variables.isFileLoaded = true;
     return true;
 }

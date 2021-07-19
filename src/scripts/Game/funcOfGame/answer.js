@@ -38,8 +38,6 @@ const timeing = 2000;
 function continueGameChunk() {
     const notLearnedWords = this.variables.chunkedWords[0]
     .filter(couple => isLearnedWord(couple) < this.variables.howManyRepeat);
-    const learnedWords = this.variables.chunkedWords[0]
-    .filter(couple => isLearnedWord(couple) >= this.variables.howManyRepeat);
 
     if (notLearnedWords.length) {
         this.variables.currentWords = notLearnedWords;
@@ -67,12 +65,17 @@ function nextWord() {
     this.variables.indexOfCRWord = this.variables.checkedWords.length - 1;
 }
 
-function answer(inputText) {
-    if (_isContainMessage.call(this, 'answer')) return;
-
+function getCorrectAnswer() {
     const indexOfCRWord = this.variables.indexOfCRWord;
     const coupleWords = this.variables.checkedWords[indexOfCRWord];
     const enRu = getEngRu(coupleWords);
+    return enRu;
+}
+
+function answer(inputText) {
+    if (_isContainMessage.call(this, 'answer')) return;
+
+    const enRu = getCorrectAnswer.call(this);
     const userAnswer = inputText.toLowerCase();
 
     if (userAnswer === enRu.ru) {
